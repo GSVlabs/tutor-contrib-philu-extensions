@@ -1,0 +1,29 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "discovery-cron-job-refresh_course_metadata"
+  namespace: "{{ K8S_NAMESPACE }}"
+spec:
+  schedule: "0 1 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: "discovery-refresh-course-metadata"
+              image: "{{ DISCOVERY_DOCKER_IMAGE }}"
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/bash
+                - -c
+                - python ./manage.py refresh_course_metadata
+              volumeMounts:
+                - mountPath: /openedx/discovery/course_discovery/settings/tutor/production.py
+                  name: settings
+                  subPath: production.py
+          restartPolicy: Never
+          volumes:
+            - name: settings
+              configMap:
+                name: discovery-settings
