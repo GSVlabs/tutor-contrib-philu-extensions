@@ -145,6 +145,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
         ("philu-extensions/build", "plugins"),
         ("philu-extensions/apps", "plugins"),
+        ("philu-extensions/k8s", "plugins"),
     ],
 )
 
