@@ -1,0 +1,3 @@
+## Enabled by default Waffle flags
+# Teams waffle flag
+(./manage.py lms waffle_flag --list | grep teams.enable_teams_app) || ./manage.py lms waffle_flag --create --everyone teams.enable_teams_app

@@ -1,0 +1,2 @@
+recursive-include tutorphilu_extensions/patches *
+recursive-include tutorphilu_extensions/templates *
