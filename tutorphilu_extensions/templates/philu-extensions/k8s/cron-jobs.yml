@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: "discovery-cron-job-refresh_course_metadata"
+  name: "discovery-cron-job-refresh-course-metadata"
   namespace: "{{ K8S_NAMESPACE }}"
 spec:
   schedule: "0 1 * * *"
