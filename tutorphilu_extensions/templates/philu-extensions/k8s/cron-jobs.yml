@@ -17,7 +17,7 @@ spec:
               command:
                 - /bin/bash
                 - -c
-                - python ./manage.py refresh_course_metadata
+                - python ./manage.py refresh_course_metadata --partner openedx
               volumeMounts:
                 - mountPath: /openedx/discovery/course_discovery/settings/tutor/production.py
                   name: settings
