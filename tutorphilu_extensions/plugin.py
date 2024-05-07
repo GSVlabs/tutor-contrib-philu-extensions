@@ -163,6 +163,37 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
 
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-common-settings",
+        "FEATURES['BASE_SITE_THEME'] = 'rg-theme'"
+    ), 1000
+)
+
+hooks.Filters.ENV_PATCHES.add_items(
+    [
+        (
+            "mfe-lms-development-settings",
+            """
+MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
+MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
+MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
+MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
+"""
+        ),
+        (
+            "mfe-lms-production-settings",
+            """
+MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
+MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
+MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
+MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
+"""
+        ),
+    ]
+)
+
+
 ########################################
 # CUSTOM JOBS (a.k.a. "do-commands")
 ########################################
