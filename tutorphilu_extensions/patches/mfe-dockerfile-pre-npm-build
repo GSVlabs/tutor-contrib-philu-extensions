@@ -1,0 +1,1 @@
+ENV LMS_BASE_URL={{ "https" if ENABLE_HTTPS else "http" }}://{{ LMS_HOST }}
