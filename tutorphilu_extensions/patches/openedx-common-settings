@@ -1,0 +1,15 @@
+from gettext import gettext as _
+
+COURSE_MODE_DEFAULTS = {
+    'android_sku': None,
+    'bulk_sku': None,
+    'currency': 'usd',
+    'description': None,
+    'expiration_datetime': None,
+    'ios_sku': None,
+    'min_price': 0,
+    'name': _('Honor'),
+    'sku': None,
+    'slug': 'honor',
+    'suggested_prices': '',
+}
