@@ -5,7 +5,7 @@ metadata:
   name: "discovery-cron-job-refresh-course-metadata"
   namespace: "{{ K8S_NAMESPACE }}"
 spec:
-  schedule: "0 1 * * *"
+  schedule: "*/15 * * * *"
   jobTemplate:
     spec:
       template:
@@ -27,3 +27,32 @@ spec:
             - name: settings
               configMap:
                 name: discovery-settings
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "credentials-cron-job-copy-catalog"
+  namespace: "{{ K8S_NAMESPACE }}"
+spec:
+  schedule: "*/20 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: "credentials-copy-catalog"
+              image: "{{ CREDENTIALS_DOCKER_IMAGE }}"
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/bash
+                - -c
+                - python ./manage.py copy_catalog
+              volumeMounts:
+                - mountPath: /openedx/credentials/credentials/settings/tutor/production.py
+                  name: settings
+                  subPath: production.py
+          restartPolicy: Never
+          volumes:
+            - name: settings
+              configMap:
+                name: credentials-settings
