@@ -163,13 +163,6 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
 
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-common-settings",
-        "FEATURES['BASE_SITE_THEME'] = 'rg-theme'"
-    ), 1000
-)
-
 hooks.Filters.ENV_PATCHES.add_items(
     [
         (
