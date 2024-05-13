@@ -172,6 +172,7 @@ MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://
 MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
+MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/open-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
 """
         ),
         (
@@ -181,8 +182,21 @@ MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://
 MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
+MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
 """
         ),
+        (
+            "openedx-development-settings",
+            """
+SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+"""
+        ),
+        (
+            "openedx-production-settings",
+            """
+SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+"""
+        )
     ]
 )
 
