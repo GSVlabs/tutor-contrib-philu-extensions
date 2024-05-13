@@ -56,3 +56,46 @@ spec:
             - name: settings
               configMap:
                 name: credentials-settings
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "lms-cron-job-cache-programs"
+  namespace: "{{ K8S_NAMESPACE }}"
+spec:
+  schedule: "*/25 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: "lms-cache-programs"
+              image: "{{ DOCKER_IMAGE_OPENEDX }}"
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/bash
+                - -c
+                - python ./manage.py lms cache_programs
+              env:
+              - name: SERVICE_VARIANT
+                value: lms
+              - name: DJANGO_SETTINGS_MODULE
+                value: lms.envs.tutor.production
+              volumeMounts:
+                - mountPath: /openedx/edx-platform/lms/envs/tutor/
+                  name: settings-lms
+                - mountPath: /openedx/edx-platform/cms/envs/tutor/
+                  name: settings-cms
+                - mountPath: /openedx/config
+                  name: config
+          restartPolicy: Never
+          volumes:
+            - name: settings-lms
+              configMap:
+                name: openedx-settings-lms
+            - name: settings-cms
+              configMap:
+                name: openedx-settings-cms
+            - name: config
+              configMap:
+                name: openedx-config
