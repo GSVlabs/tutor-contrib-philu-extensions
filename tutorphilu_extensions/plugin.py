@@ -189,12 +189,22 @@ MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/OPEN-e
             "openedx-development-settings",
             """
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+MFE_CONFIG_OVERRIDES = {
+    'course-authoring': {
+        'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
+    }
+}
 """
         ),
         (
             "openedx-production-settings",
             """
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+MFE_CONFIG_OVERRIDES = {
+    'course-authoring': {
+        'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
+    }
+}
 """
         )
     ]
