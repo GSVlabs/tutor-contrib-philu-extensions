@@ -166,7 +166,7 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
 hooks.Filters.ENV_PATCHES.add_items(
     [
         (
-            "mfe-lms-common-settings",
+            "mfe-lms-development-settings",
             """
 MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
@@ -178,6 +178,12 @@ MFE_CONFIG_OVERRIDES = {
         'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
     }
 }
+"""
+        ),
+        (
+            "openedx-common-settings",
+            """
+SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
 """
         )
     ]
