@@ -166,33 +166,22 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
 hooks.Filters.ENV_PATCHES.add_items(
     [
         (
-            "mfe-lms-development-settings",
+            "mfe-lms-common-settings",
             """
 MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
 MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/open-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+MFE_CONFIG_OVERRIDES = {
+    'course-authoring': {
+        'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
+    }
+}
 """
         ),
         (
-            "mfe-lms-production-settings",
-            """
-MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
-MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
-MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
-MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
-MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
-"""
-        ),
-        (
-            "openedx-development-settings",
-            """
-SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
-"""
-        ),
-        (
-            "openedx-production-settings",
+            "openedx-common-settings",
             """
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
 """
