@@ -166,7 +166,7 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
 hooks.Filters.ENV_PATCHES.add_items(
     [
         (
-            "mfe-lms-development-settings",
+            "mfe-lms-common-settings",
             """
 MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
 MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
