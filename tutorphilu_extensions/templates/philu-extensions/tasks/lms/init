@@ -9,4 +9,7 @@
 (./manage.py lms waffle_switch --list | grep student.courseenrollment_admin) || ./manage.py lms waffle_switch --create student.courseenrollment_admin on
 
 ## Disabled by default Waffle flags
-(./manage.py lms waffle_flag --list | grep contentstore.enable_copy_paste_units) && ./manage.py lms waffle_flag --create --deactivate contentstore.enable_copy_paste_units
+(./manage.py lms waffle_flag --list | grep contentstore.enable_copy_paste_units) && ./manage.py lms waffle_flag --deactivate contentstore.enable_copy_paste_units
+(./manage.py lms waffle_flag --list | grep new_core_editors.use_new_problem_editor) && ./manage.py lms waffle_flag --deactivate new_core_editors.use_new_problem_editor
+(./manage.py lms waffle_flag --list | grep new_core_editors.use_new_text_editor) && ./manage.py lms waffle_flag --deactivate new_core_editors.use_new_text_editor
+(./manage.py lms waffle_flag --list | grep new_core_editors.use_new_video_editor) && ./manage.py lms waffle_flag --deactivate new_core_editors.use_new_video_editor
