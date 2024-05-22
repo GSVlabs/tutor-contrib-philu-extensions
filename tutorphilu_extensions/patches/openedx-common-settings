@@ -13,3 +13,5 @@ COURSE_MODE_DEFAULTS = {
     'slug': 'honor',
     'suggested_prices': '',
 }
+
+CREDENTIALS_SERVICE_USERNAME = 'credentials'
