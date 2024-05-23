@@ -1,6 +1,5 @@
 ## Enabled by default Waffle flags
 (./manage.py lms waffle_flag --list | grep teams.enable_teams_app) || ./manage.py lms waffle_flag --create --everyone teams.enable_teams_app
-(./manage.py lms waffle_flag --list | grep microfrontend_course_exit_page) || ./manage.py lms waffle_flag --create --everyone microfrontend_course_exit_page
 (./manage.py lms waffle_flag --list | grep course_modes.extend_certificate_relevant_modes_with_honor) || ./manage.py lms waffle_flag --create --everyone course_modes.extend_certificate_relevant_modes_with_honor
 (./manage.py lms waffle_flag --list | grep courseware.microfrontend_course_exit_page) || ./manage.py lms waffle_flag --create --everyone courseware.microfrontend_course_exit_page
 
