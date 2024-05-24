@@ -178,12 +178,18 @@ MFE_CONFIG_OVERRIDES = {
         'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
     }
 }
+MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = 'true'
+MFE_CONFIG['ENABLE_PROGRESSIVE_PROFILING_ON_AUTHN'] = 'true'
+MFE_CONFIG['SHOW_CONFIGURABLE_EDX_FIELDS'] = 'true'
+MFE_CONFIG['TERMS_OF_USE'] = 'https://www.philanthropyu.org/terms-of-use'
 """
         ),
         (
             "openedx-common-settings",
             """
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+REGISTRATION_EXTRA_FIELDS['country'] = 'hidden'
+ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
 """
         )
     ]
