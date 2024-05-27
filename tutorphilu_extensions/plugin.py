@@ -176,6 +176,9 @@ MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/open-e
 MFE_CONFIG_OVERRIDES = {
     'course-authoring': {
         'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
+    },
+    'learning': {
+        'LEGACY_THEME_NAME': 'edx-theme'
     }
 }
 MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = 'true'
