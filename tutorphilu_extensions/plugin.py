@@ -199,6 +199,8 @@ REGISTRATION_EXTRA_FIELDS['organization'] = 'optional'
 REGISTRATION_EXTRA_FIELDS['organization_type'] = 'optional'
 REGISTRATION_EXTRA_FIELDS['is_organization_registered'] = 'optional'
 REGISTRATION_EXTRA_FIELDS['organization_size'] = 'optional'
+SOCIAL_SHARING_SETTINGS['CERTIFICATE_FACEBOOK'] = True
+SOCIAL_SHARING_SETTINGS['CERTIFICATE_TWITTER'] = True
 """
         )
     ]
