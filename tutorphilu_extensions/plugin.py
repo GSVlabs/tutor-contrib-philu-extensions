@@ -188,6 +188,7 @@ MFE_CONFIG['TERMS_OF_USE'] = 'https://www.philanthropyu.org/terms-of-use'
             "openedx-common-settings",
             """
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/OPEN-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
+ENABLE_V2_CERT_DISPLAY_SETTINGS = True
 ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
 REGISTRATION_EXTRA_FIELDS['country'] = 'hidden'
 REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'
