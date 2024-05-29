@@ -176,6 +176,9 @@ MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/open-e
 MFE_CONFIG_OVERRIDES = {
     'course-authoring': {
         'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
+    },
+    'learning': {
+        'LEGACY_THEME_NAME': 'edx-theme'
     }
 }
 MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = 'true'
@@ -188,8 +191,18 @@ MFE_CONFIG['TERMS_OF_USE'] = 'https://www.philanthropyu.org/terms-of-use'
             "openedx-common-settings",
             """
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/open-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
-REGISTRATION_EXTRA_FIELDS['country'] = 'hidden'
+ENABLE_V2_CERT_DISPLAY_SETTINGS = True
 ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
+REGISTRATION_EXTRA_FIELDS['country'] = 'hidden'
+REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'
+REGISTRATION_EXTRA_FIELDS['level_of_education'] = 'hidden'
+REGISTRATION_EXTRA_FIELDS['year_of_birth'] = 'hidden'
+REGISTRATION_EXTRA_FIELDS['mailing_address'] = 'hidden'
+REGISTRATION_EXTRA_FIELDS['gender'] = 'hidden'
+REGISTRATION_EXTRA_FIELDS['organization'] = 'optional'
+REGISTRATION_EXTRA_FIELDS['organization_type'] = 'optional'
+REGISTRATION_EXTRA_FIELDS['is_organization_registered'] = 'optional'
+REGISTRATION_EXTRA_FIELDS['organization_size'] = 'optional'
 SOCIAL_SHARING_SETTINGS['CERTIFICATE_FACEBOOK'] = True
 SOCIAL_SHARING_SETTINGS['CERTIFICATE_TWITTER'] = True
 """
