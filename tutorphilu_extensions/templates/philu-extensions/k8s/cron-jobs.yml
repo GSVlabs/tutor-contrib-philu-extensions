@@ -75,7 +75,7 @@ spec:
               command:
                 - /bin/bash
                 - -c
-                - python ./manage.py lms cache_programs
+                - python ./manage.py lms cache_programs --domain {{ LMS_HOST }}
               env:
               - name: SERVICE_VARIANT
                 value: lms
