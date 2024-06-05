@@ -208,7 +208,13 @@ REGISTRATION_EXTRA_FIELDS['organization_size'] = 'optional'
 SOCIAL_SHARING_SETTINGS['CERTIFICATE_FACEBOOK'] = True
 SOCIAL_SHARING_SETTINGS['CERTIFICATE_TWITTER'] = True
 """
-        )
+        ),
+        (
+            "openedx-lms-common-settings",
+            """
+ACCOUNT_VISIBILITY_CONFIGURATION['admin_fields'].append('english_proficiency')
+"""
+        ),
     ]
 )
 
