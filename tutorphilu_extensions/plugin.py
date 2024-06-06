@@ -178,7 +178,7 @@ MFE_CONFIG_OVERRIDES = {
         'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
     },
     'learning': {
-        'LEGACY_THEME_NAME': 'edx-theme'
+        'LEGACY_THEME_NAME': 'rg-theme'
     }
 }
 MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = 'true'
