@@ -213,6 +213,7 @@ SOCIAL_SHARING_SETTINGS['CERTIFICATE_TWITTER'] = True
             "openedx-lms-common-settings",
             """
 ACCOUNT_VISIBILITY_CONFIGURATION['admin_fields'].append('english_proficiency')
+ACCOUNT_VISIBILITY_CONFIGURATION['admin_fields'].append('organization')
 COOKIE_POLICY_COOKIE_DOMAIN = ".{{ LMS_HOST }}"
 """
         ),
