@@ -1,0 +1,5 @@
+RUN pip install \
+-e git+https://github.com/GSVlabs/philu-AudioXBlock@master#egg=Audio-xblock \
+git+https://github.com/GSVlabs/philu-rg-openedx-plugin@main#egg=rg-openedx-plugin \
+git+https://github.com/openedx/FeedbackXBlock.git@1.4.0#egg=feedback-xblock \
+git+https://github.com/open-craft/xblock-pdf.git@v1.1.0#egg=xblock-pdf
