@@ -14,4 +14,5 @@ COURSE_MODE_DEFAULTS = {
     'suggested_prices': '',
 }
 
+CONTACT_MAILING_ADDRESS = False
 CREDENTIALS_SERVICE_USERNAME = 'credentials'
