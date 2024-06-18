@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 from glob import glob
 
-import click
+# import click
 import importlib_resources
 from tutor import hooks
 
@@ -19,6 +19,9 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'PHILU_EXTENSIONS_'.
         ("PHILU_EXTENSIONS_VERSION", __version__),
+        ("PHILU_EXTENTIONS_BRAND_VERSION", "quince.main"),
+        ("PHILU_EXTENTIONS_HEADER_VERSION", "quince.main"),
+        ("PHILU_EXTENTIONS_FOOTER_VERSION", "quince.main"),
     ]
 )
 
@@ -100,25 +103,22 @@ hooks.Filters.IMAGES_BUILD.add_items(
 #     ("<tutor_image_name>", "<docker_image_tag>")
 hooks.Filters.IMAGES_PULL.add_items(
     [
-        # To pull `myimage` with `tutor images pull myimage`, you would write:
-        ### (
-        ###     "myimage",
-        ###     "docker.io/myimage:{{ PHILU_EXTENSIONS_VERSION }}",
-        ### ),
+        (
+            "credentials",
+            "{{ CREDENTIALS_DOCKER_IMAGE }}",
+        )
     ]
 )
-
 
 # Images to be pushed as part of `tutor images push`.
 # Each item is a pair in the form:
 #     ("<tutor_image_name>", "<docker_image_tag>")
 hooks.Filters.IMAGES_PUSH.add_items(
     [
-        # To push `myimage` with `tutor images push myimage`, you would write:
-        ### (
-        ###     "myimage",
-        ###     "docker.io/myimage:{{ PHILU_EXTENSIONS_VERSION }}",
-        ### ),
+        (
+            "credentials",
+            "{{ CREDENTIALS_DOCKER_IMAGE }}",
+        )
     ]
 )
 
@@ -166,57 +166,28 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
 hooks.Filters.ENV_PATCHES.add_items(
     [
         (
-            "mfe-lms-common-settings",
-            """
-MFE_CONFIG['LOGO_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
-MFE_CONFIG['LOGO_TRADEMARK_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
-MFE_CONFIG['LOGO_WHITE_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo.svg'
-MFE_CONFIG['FAVICON_URL'] = '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon.ico'
-MFE_CONFIG['SUPPORT_URL_DROPDOWN'] = 'https://edx.readthedocs.io/projects/open-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
-MFE_CONFIG_OVERRIDES = {
-    'course-authoring': {
-        'LOGO_URL': '{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/logo-dark.svg'
-    },
-    'learning': {
-        'LEGACY_THEME_NAME': 'rg-theme'
-    }
-}
-MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = 'true'
-MFE_CONFIG['ENABLE_PROGRESSIVE_PROFILING_ON_AUTHN'] = 'true'
-MFE_CONFIG['SHOW_CONFIGURABLE_EDX_FIELDS'] = 'true'
-MFE_CONFIG['TERMS_OF_USE'] = 'https://www.philanthropyu.org/terms-of-use'
-MFE_CONFIG['SITE_NAME'] = '{{ PLATFORM_NAME }}'
-"""
+            "mfe-dockerfile-pre-npm-build-discussions",
+            "ENV USE_LR_MFE='true'"
         ),
         (
-            "openedx-common-settings",
-            """
-FEATURES['ENABLE_V2_CERT_DISPLAY_SETTINGS'] = True
-FEATURES['ENABLE_XBLOCK_VIEW_ENDPOINT'] = True
-SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/open-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
-ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
-REGISTRATION_EXTRA_FIELDS['country'] = 'hidden'
-REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'
-REGISTRATION_EXTRA_FIELDS['level_of_education'] = 'hidden'
-REGISTRATION_EXTRA_FIELDS['year_of_birth'] = 'hidden'
-REGISTRATION_EXTRA_FIELDS['mailing_address'] = 'hidden'
-REGISTRATION_EXTRA_FIELDS['gender'] = 'hidden'
-REGISTRATION_EXTRA_FIELDS['organization'] = 'optional'
-REGISTRATION_EXTRA_FIELDS['organization_type'] = 'optional'
-REGISTRATION_EXTRA_FIELDS['is_organization_registered'] = 'optional'
-REGISTRATION_EXTRA_FIELDS['organization_size'] = 'optional'
-SOCIAL_SHARING_SETTINGS['CERTIFICATE_FACEBOOK'] = True
-SOCIAL_SHARING_SETTINGS['CERTIFICATE_TWITTER'] = True
-PLATFORM_TWITTER_ACCOUNT = '@PhilanthropyUni'
-"""
+            "mfe-dockerfile-pre-npm-build-learner-record",
+            "ENV FAVICON_URL='{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon-mfe.ico'"
         ),
         (
-            "openedx-lms-common-settings",
-            """
-ACCOUNT_VISIBILITY_CONFIGURATION['admin_fields'].append('english_proficiency')
-ACCOUNT_VISIBILITY_CONFIGURATION['admin_fields'].append('organization')
-COOKIE_POLICY_COOKIE_DOMAIN = ".{{ LMS_HOST }}"
-"""
+            "mfe-dockerfile-post-npm-instal-authn",
+            "RUN npm i react-zendesk --save"
+        ),
+        (
+            "mfe-dockerfile-post-npm-instal-learning",
+            "RUN npm i react-zendesk --save"
+        ),
+        (
+            "mfe-dockerfile-post-npm-instal-learner-record",
+            "RUN npm i react-zendesk --save"
+        ),
+        (
+            "mfe-dockerfile-post-npm-instal-discussions",
+            "RUN npm i react-zendesk --save"
         ),
     ]
 )
