@@ -19,6 +19,7 @@ CREDENTIALS_SERVICE_USERNAME = 'credentials'
 
 SUPPORT_URL_DROPDOWN = 'https://edx.readthedocs.io/projects/open-edx-learner-guide/en/open-release-quince.master/SFD_dashboard_profile_SectionHead.html'
 ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
+FEATURES['ENABLE_LEARNER_RECORDS'] = True
 REGISTRATION_EXTRA_FIELDS['country'] = 'hidden'
 REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'
 REGISTRATION_EXTRA_FIELDS['level_of_education'] = 'hidden'
