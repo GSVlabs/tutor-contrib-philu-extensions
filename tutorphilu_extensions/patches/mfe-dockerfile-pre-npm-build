@@ -1,3 +1,4 @@
 ENV LMS_BASE_URL={{ "https" if ENABLE_HTTPS else "http" }}://{{ LMS_HOST }}
 ENV COOKIE_POLICY_COOKIE_DOMAIN=".{{ LMS_HOST }}"
 ENV SITE_NAME="{{ PLATFORM_NAME }}"
+ENV FAVICON_URL="{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon-mfe.ico"

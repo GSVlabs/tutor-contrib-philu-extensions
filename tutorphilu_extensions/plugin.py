@@ -166,10 +166,6 @@ for path in glob(str(importlib_resources.files("tutorphilu_extensions") / "patch
 hooks.Filters.ENV_PATCHES.add_items(
     [
         (
-            "mfe-dockerfile-pre-npm-build-discussions",
-            "ENV FAVICON_URL='{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/static/rg-theme/images/favicon-mfe.ico'"
-        ),
-        (
             "mfe-dockerfile-pre-npm-build-learner-record",
             "ENV USE_LR_MFE='true'"
         ),
