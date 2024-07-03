@@ -22,6 +22,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("PHILU_EXTENTIONS_BRAND_VERSION", "quince.main"),
         ("PHILU_EXTENTIONS_HEADER_VERSION", "quince.main"),
         ("PHILU_EXTENTIONS_FOOTER_VERSION", "quince.main"),
+        ("PHILU_EXTENSIONS_RGOX_PLUGIN_VERSION", "main"),
     ]
 )
 
