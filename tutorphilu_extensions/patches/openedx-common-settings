@@ -37,3 +37,6 @@ SOCIAL_SHARING_SETTINGS = {
 }
 ZENDESK_KEY = '19c14808-6ad4-41f1-b5af-fcf69742adf8'
 PLATFORM_TWITTER_ACCOUNT = '@PhilanthropyUni'
+XBLOCK_SETTINGS["ScormXBlock"] = {
+    "STORAGE_FUNC": "openedxscorm.storage.s3",
+}
