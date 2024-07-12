@@ -40,3 +40,4 @@ PLATFORM_TWITTER_ACCOUNT = '@PhilanthropyUni'
 XBLOCK_SETTINGS["ScormXBlock"] = {
     "STORAGE_FUNC": "openedxscorm.storage.s3",
 }
+COURSE_CATALOG_API_URL = "https://{{ DISCOVERY_HOST }}/api/v1"
