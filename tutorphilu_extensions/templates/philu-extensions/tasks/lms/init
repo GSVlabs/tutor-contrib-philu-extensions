@@ -13,3 +13,6 @@
 (./manage.py lms waffle_flag --list | grep new_core_editors.use_new_problem_editor) && ./manage.py lms waffle_flag --deactivate new_core_editors.use_new_problem_editor
 (./manage.py lms waffle_flag --list | grep new_core_editors.use_new_text_editor) && ./manage.py lms waffle_flag --deactivate new_core_editors.use_new_text_editor
 (./manage.py lms waffle_flag --list | grep new_core_editors.use_new_video_editor) && ./manage.py lms waffle_flag --deactivate new_core_editors.use_new_video_editor
+
+## Fix catalog service user permissions
+./manage.py lms manage_user lms_catalog_service_user lms_catalog_service_user@openedx --staff --unusable-password
