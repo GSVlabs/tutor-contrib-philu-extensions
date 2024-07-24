@@ -5,7 +5,7 @@ metadata:
   name: "discovery-cron-job-refresh-course-metadata"
   namespace: "{{ K8S_NAMESPACE }}"
 spec:
-  schedule: "*/15 * * * *"
+  schedule: "10 0 * * *"
   jobTemplate:
     spec:
       template:
@@ -34,7 +34,7 @@ metadata:
   name: "credentials-cron-job-copy-catalog"
   namespace: "{{ K8S_NAMESPACE }}"
 spec:
-  schedule: "*/20 * * * *"
+  schedule: "20 0 * * *"
   jobTemplate:
     spec:
       template:
@@ -63,7 +63,7 @@ metadata:
   name: "lms-cron-job-cache-programs"
   namespace: "{{ K8S_NAMESPACE }}"
 spec:
-  schedule: "*/25 * * * *"
+  schedule: "15 0 * * *"
   jobTemplate:
     spec:
       template:
