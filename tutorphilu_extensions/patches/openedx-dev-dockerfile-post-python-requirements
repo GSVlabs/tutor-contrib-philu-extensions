@@ -1,0 +1,1 @@
+RUN pip install ora2==6.6.2
