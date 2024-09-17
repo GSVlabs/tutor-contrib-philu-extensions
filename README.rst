@@ -1,3 +1,5 @@
+This repo is part of the philu set of repos, that create the philanthropyu.org website
+
 philu-extensions plugin for `Tutor <https://docs.tutor.edly.io>`__
 ###############################################################################
 
